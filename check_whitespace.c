@@ -45,7 +45,6 @@ char* strip(char* str) {
   }
   // Place the null terminator at the end of the result string.
   result[i-first_non_space] = '\0';
-
   return result;
 }
 
@@ -67,6 +66,10 @@ int is_clean(char* str) {
   // greater than the second.
   result = strcmp(str, cleaned);
 
+  // need to free up cleaned here
+  if (strlen(cleaned) != 0){
+  	free(cleaned);
+  }
   return result == 0;
 }
 
@@ -90,6 +93,6 @@ int main() {
       printf("The string '%s' is NOT clean.\n", strings[i]);
     }
   }
-
+  
   return 0;
 }
